@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 module.exports = {
     entry: {
@@ -7,10 +6,9 @@ module.exports = {
     target: "web",
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'browser-bundle', 'bundle'),
+        path: path.join(__dirname, 'browser-bundle'),
         chunkFilename: '[id].js'
     },
-    devtool: 'source-map',
     resolve: {
         extensions: ['.js']
     },
@@ -18,24 +16,10 @@ module.exports = {
         rules: [
             {
                 include: [
-                    path.resolve('./node_modules/example-webpack-dependency')
-                ],
-                use: 'source-map-loader'
-            },
-            {
-                include: [
                     path.resolve('./src')
                 ],
                 loader: 'babel-loader'
             }
         ]
-    },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            mangle: true,
-            compress: {warnings: false},
-            sourceMap: true
-        })
-    ]
+    }
 };

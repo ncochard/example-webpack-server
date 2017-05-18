@@ -14,7 +14,11 @@
     "clean": "rimraf browser-bundle server-bundle",
     "build-browser": "webpack --config ./webpack-browser.config.js",
     "build-server": "webpack --config ./webpack-server.config.js",
-    "build": "npm run build-browser && npm run build-server",
+    "minify-browser-bundle": "uglifyjs ./browser-bundle/app.js --output ./browser-bundle/app.min.js --compress --mangle",
+    "minify-server-bundle": "uglifyjs ./server-bundle/app.js --output ./server-bundle/app.min.js --compress --mangle",
+    "transpile": "npm run build-browser && npm run build-server",
+    "minify": "npm run minify-browser-bundle && npm run minify-server-bundle",
+    "build": "npm run transpile && npm run minify",
     "prepublish": "npm run build"
   },
   "devDependencies": {
@@ -25,8 +29,8 @@
     "path": "^0.12.7",
     "rimraf": "^2.6.1",
     "source-map-loader": "^0.2.1",
-    "webpack": "^2.5.1",
-    "webpack-uglify-harmony": "^1.0.0"
+    "uglify-es": "^3.0.8",
+    "webpack": "^2.5.1"
   },
   "dependencies": {
     "example-webpack-dependency": "git+https://github.com/ncochard/example-webpack-dependency.git"
