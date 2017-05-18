@@ -1,0 +1,22 @@
+{
+    "env": {
+        "module": {
+            "presets": [
+                ["es2015-node6", { "modules": false }]
+            ],
+            "sourceMaps": true
+        },
+        "browser": {
+            "presets": [
+                ["es2015", { "modules": false }]
+            ],
+            "sourceMaps": true
+        },
+        "development": {
+            "presets": [
+                "es2015"
+            ],
+            "sourceMaps": true
+        }
+    }
+}
